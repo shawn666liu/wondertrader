@@ -899,7 +899,7 @@ int TraderDD::orderAction(WTSEntrustAction* action)
 
 	action->retain();
 	m_strandIO->post([this, action]() {
-		write_log(m_traderSink, LL_INFO, "[TraderDD] 调用撤单接口 ..."）;
+		write_log(m_traderSink, LL_INFO, "[TraderDD] 调用撤单接口 ...");
 
 		HANDLE_SESSION sess = Fix_AllocateSession(m_hConn);
 		Fix_SetNode(sess, m_strNode.c_str());

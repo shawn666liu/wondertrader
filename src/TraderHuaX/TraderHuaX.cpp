@@ -800,14 +800,14 @@ void TraderHuaX::doLogin()
 	CTORATstpReqUserLoginField field;
 	memset(&field, 0, sizeof(CTORATstpReqUserLoginField));
 	//以用户代码方式登录
-	strcpy_s(field.LogInAccount, _user.c_str());
+	strcpy(field.LogInAccount, _user.c_str());
 	field.LogInAccountType = TORA_TSTP_LACT_UserID;
-	strcpy_s(field.Password, _pass.c_str());
+	strcpy(field.Password, _pass.c_str());
 	// 终端采集  信息
-	strcpy_s(field.UserProductInfo, _productInfo.c_str());
+	strcpy(field.UserProductInfo, _productInfo.c_str());
 	// 按照监管要求填写终端信息
 	const char* terminalInfo = fmtutil::format("{};IIP={};IPORT={};LIP={};MAC={};HD={}", _terminal, _pub_ip, _pub_port, _trade_ip, _mac, _hard_disk);
-	strcpy_s(field.TerminalInfo, terminalInfo);
+	strcpy(field.TerminalInfo, terminalInfo);
 
 	int ret = _api->ReqUserLogin(&field, genRequestID());
 	if (ret != 0)
@@ -842,7 +842,7 @@ int TraderHuaX::logout()
 	if (_api == NULL)
 		return -1;
 	CTORATstpUserLogoutField field;
-	strcpy_s(field.UserID, _user.c_str());
+	strcpy(field.UserID, _user.c_str());
 	int ret = _api->ReqUserLogout(&field, genRequestID());
 	return 0;
 }
